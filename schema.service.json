@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "properties": {
+    "serviceAccountName": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "routing": {
+      "type": "object",
+      "properties": {
+        "pathPrefixes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "default": {
+          "type": "boolean"
+        }
+      },
+      "required": ["pathPrefixes"],
+      "additionalProperties": false
+    },
+    "env": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "fromSecret": { "type": "string" },
+          "value": { "type": "string" }
+        },
+        "required": ["name"],
+        "oneOf": [
+          {
+            "required": [],
+            "not": {
+              "anyOf": [
+                { "required": ["fromSecret"] },
+                { "required": ["value"] }
+              ]
+            }
+          },
+          { "required": ["fromSecret"] },
+          { "required": ["value"] }
+        ],
+        "additionalProperties": false
+      }
+    },
+    "canaryHidden": { "type": "boolean" }
+  },
+  "required": ["serviceAccountName", "image", "routing", "env"],
+  "additionalProperties": false
+}

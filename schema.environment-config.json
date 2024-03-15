@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "env": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "fromSecret": { "type": "string" },
+          "value": { "type": "string" }
+        },
+        "required": ["name"],
+        "oneOf": [{ "required": ["fromSecret"] }, { "required": ["value"] }],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["env"],
+  "additionalProperties": false
+}

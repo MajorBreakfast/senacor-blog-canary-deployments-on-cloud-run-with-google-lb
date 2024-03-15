@@ -1,0 +1,6 @@
+services_folder       = "services-dev"
+project               = null # User provided
+region                = "europe-west1"
+prefix                = "beppo"
+api_domain            = null # User provided
+dns_managed_zone_name = null # User provided

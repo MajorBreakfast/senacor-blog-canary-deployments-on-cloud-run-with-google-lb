@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../schema.service.json
+serviceAccountName: 211935152727-compute@developer.gserviceaccount.com
+image: us-docker.pkg.dev/cloudrun/container/hello
+routing:
+  pathPrefixes:
+    - /first
+env: []
